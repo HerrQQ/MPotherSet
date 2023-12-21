@@ -1,0 +1,3 @@
+/home/kaifengqu/Desktop/Linuxcode2/H01MPSet/build/CMakeFiles/rebuild_cache.dir
+/home/kaifengqu/Desktop/Linuxcode2/H01MPSet/build/CMakeFiles/edit_cache.dir
+/home/kaifengqu/Desktop/Linuxcode2/H01MPSet/build/CMakeFiles/project_osqp.dir
