@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/project_osqp.dir/src/main.cpp.o  -o project_osqp  -Wl,-rpath,/home/kaifengqu/anaconda3/lib /home/kaifengqu/anaconda3/lib/libOsqpEigen.so.0.8.1 /home/kaifengqu/anaconda3/lib/libosqp.so 

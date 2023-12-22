@@ -1,0 +1,5 @@
+Cost:
+  jerk: 1.0
+  acceleration: 1.0
+  velocity: 1.0
+  position: 1.0

@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.14.1)
-project(project_osqp)
+project(project_Planner)
 set( CMAKE_CXX_STANDARD 11 )
 set( CMAKE_CXX_STANDARD_REQUIRED ON )
 set( THREADS_PREFER_PTHREAD_FLAG ON )
@@ -35,8 +35,11 @@ find_package(glog REQUIRED)
 find_package(Eigen3 REQUIRED)
 #find_package(osqp REQUIRED )
 find_package(OsqpEigen REQUIRED)
+find_package(yaml-cpp REQUIRED)
 
-#set(GLOG_LIBRARIES "/usr/local/lib/libglog.so")
+Set(GLOG_INCLUDE_DIRS "/usr/include/glog/")
+Set(GLOG_LIBRARIES "/usr/lib/x86_64-linux-gnu/libglog.so")
+#Set(GLOG_LIBRARIES "/usr/local/lib/libglog.so")
 
 # message(STATUS "GLOG_INCLUDE_DIRS: ${GLOG_INCLUDE_DIR}")
 # message(STATUS "GLOG_LIBRARIES: ${GLOG_LIBRARIES}")
@@ -50,6 +53,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} SRC_LIST)
  aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src/. SRC_LIST)
+ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/commen/. SRC_LIST)
+ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/. SRC_LIST)
 
 #aux_source_directory_recursively(${CMAKE_CURRENT_SOURCE_DIR}/src SRC_LIST)
 include_sub_directories_recursively(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -70,23 +75,30 @@ endforeach()
 
 include_directories(${GLOG_INCLUDE_DIRS})
 include_directories(${EIGEN3_INCLUDE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/.)
+
+
+
 add_executable(${PROJECT_NAME} ${SRC_LIST})
 #add_library(${PROJECT_NAME} STATIC ${SRC_LIST}) # temp use 
 target_include_directories(${PROJECT_NAME} PRIVATE ${GLOG_INCLUDE_DIRS})
 #target_include_directories(${PROJECT_NAME} PRIVATE ${OSQP_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} OsqpEigen::OsqpEigen)
+#target_link_libraries(${PROJECT_NAME} OsqpEigen::OsqpEigen)
 target_link_libraries(${PROJECT_NAME} PRIVATE ${GLOG_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${EIGEN3_LIBRARIES})
-#target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/libs/yaml-cpp/libyaml-cpp.a)
+target_link_libraries(${PROJECT_NAME} PRIVATE yaml-cpp)
+
+# link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/yaml-cpp/)# for all 
+# target_link_libraries(${PROJECT_NAME} PRIVATE libyaml-cpp.a)
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/libs/yaml-cD/libyaml-cD.a)
 #target_link_libraries(${PROJECT_NAME} PRIVATE osqp::osqp)
 #####################################unit test ###################################
 # add_executable(unit_test_pathFW ${SRC_LIST}) 
 # target_link_libraries( unit_test_pathFW
 #                         ${GLOG_LIBRARIES}
-#                         # ${CMAKE_CURRENT_SOURCE_DIR}/libs/yaml-cpp/libyaml-cpp.a
-#                         ${CMAKE_CURRENT_SOURCE_DIR}/libs/yaml-cpp/libyaml-cpp.a
-#                         # yaml-cpp
+#                         # ${CMAKE_CURRENT_SOURCE_DIR}/libs/yaml-cD/libyaml-cD.a
+#                         ${CMAKE_CURRENT_SOURCE_DIR}/libs/yaml-cD/libyaml-cD.a
+#                         # yaml-cD
 #                         )
 #####################################unit test end#################################
 

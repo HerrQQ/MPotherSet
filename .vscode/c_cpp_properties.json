@@ -3,15 +3,22 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
+                "${workspaceFolder}/include/**",
                 "/usr/include/**",
                 "/usr/include/eigen3/**",
                 "/usr/local/include",
-                "~/anaconda3/include/**"
+                "~/anaconda3/include/**",
+                "${workspaceFolder}/commen/**",
+                "${workspaceFolder}/libs/yaml-cpp/include/**",
+                "${workspaceFolder}/libs/yaml-cpp/include/yaml-cpp/node",
+                "${workspaceFolder}/libs/yaml-cpp/include/yaml-cpp/**",
+                "${workspaceFolder}/libs/yaml-cpp/include/yaml-cpp/contrib",
+                "${workspaceFolder}/libs/yaml-cpp/include/yaml-cpp/node/detail",
+                "${workspaceFolder}"
             ],
             "defines": [],
             "cStandard": "c17",
-            "cppStandard": "gnu++14",
+            "cDStandard": "gnu++14",
             "intelliSenseMode": "linux-gcc-x64"
         }
     ],
